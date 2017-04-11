@@ -1,4 +1,0 @@
-name sirname age  hobby
-Manju reddy   29    singing
-Rishi  shereddy 3    playing
-Ravi   chandra  33   reading
