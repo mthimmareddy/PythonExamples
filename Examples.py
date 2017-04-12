@@ -211,13 +211,14 @@ def fileexists():
 
 def reversestring():
 
- str1=input('Enter the String: ')
+ str1=input('Enter the String')
  str2=""
- j=0
- i=len(str1)
- while(i<=0): 
-  str2[j]=str1[i]
-  j=j+1
+ #j=0
+ i=len(str1)-1
+ while(i>=0): 
+  str2+=str1[i]
+  #print (str2)
+  #j=j+1
   i=i-1
  print ("{0} is original,{1} is reverse of string".format(str1,str2))
 
@@ -229,11 +230,14 @@ def squareroot():
  num=int(input('Enter the number :'))
  x=num/2
  i=1
+ flag=1
  while(i<x):
   if (i*i==num):
    print("{0} is the square root of {1}".format(i,num))
+   flag=0
    break
   i=i+1
+ if(flag==1):
   print("{0} is not a perfect square".format(num))
 
 ##################################################################################################
@@ -241,9 +245,12 @@ def squareroot():
 
 def printrangenumbers():
  i=1
- if(i<100):
+ def recur(i):
+  if(i<100):
    print (i)
-   printrangenumbers()
+   i=i+1
+   recur(i)
+ recur(1)
 ####################################################################################################3
 
 
@@ -251,18 +258,29 @@ def listavg():
  list1=[2,3,4,5,3,4]
  sum1=0
  for i in list1:
-  sum1 = sum1 + i
+  sum1+=i
  avg=sum1/(len(list1)+1)
  print("Average of list is:",avg)
 
 
 ##################################################################################################
 
-def fib(n):
- if n==1 or n==0:
-  return 1
- else:
-  return fib(n-1)+fib(n-2)
+def fib():
+ def fibo(n):
+ #n=int(input('Enter the number'))
+  if( n == 0):
+        return 0
+  else:
+        x = 0
+        y = 1
+        for i in range(1,n):
+            z = (x + y)
+            x = y
+            y = z
+        return y
+
+ for i in range(10):
+    print (fibo(i))
 
 ##########################################################################################################3
 
@@ -367,30 +385,40 @@ def dupcharfile():
 
 ###########################################################################################################
 def listofdict():
- import re
-
-
  list1=[]
- list2=[]
  listall=[]
- keys=[]
  dict1={}
  d={}
- with open("test2.txt", 'r') as f:
-  for line in f:
-     keys=re.findall("\w+",line)
-     for item in f:
-       listall.append(re.findall("\w+",item))
 
- d=dict(zip(keys,map(list,zip(*listall))))
+
+ with open("test2.txt", 'r') as f:
+  for i in range(0,4):
+   header=f.readline().strip()
+   keys=[]
+   list1=header.split(" ")
+  for i in list1:
+   if i:
+    keys.append(i)
+  listall.append(keys)
+
+  print (listall)
+
+ values=[]
+ for i in range(0,len(listall)):
+  values.append(listall[i])
+
+#print(values)
+
+
+ d=dict(zip(listall[0],map(list,zip(*values))))
  print (d)
 
- for i in range(0,len(listall)):
-  dict1=dict(zip(keys,listall[i]))
+ list2=[]
+ for i in range(1,len(listall)):
+  dict1=dict(zip(listall[0],listall[i]))
   list2.append(dict1)
 
  print(list2)
-
 #####################################################################################################################
 
 def listofdict1():
