@@ -26,16 +26,9 @@ Programs='''
 20.Print the range of numbers 1-100 witout using loops
 21.Given a list find the avg of list
 22.Find a fibonacci series of number
-11.Find factorial without recursion
-12.Given list ,prime numbers with generators and witout generators
-13.File exists
-
+23.Find reverse of string
+24.File exists
 '''
-
-print (Programs)
-
-
-
 
 
 def ipcheck():
