@@ -35,13 +35,22 @@ Programs='''
 
 def ipcheck():
 #1.Validate the ip adderess
- input_ip=str(input('Enter the ip:'))
- 
+ input_ip=input('Enter the ip:')
+ flag=0
  pattern="^\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}$"
- if re.compile(pattern,"input_ip"):
-  print ('Found ip')
+ match=re.match(pattern,input_ip)
+ if (match):
+  field=input_ip.split(".") 
+  for i in range(0,len(field)): 
+   if(int(field[i])<256): 
+    flag=1
+
+   else:
+    flag=0
+ if (flag==1):
+   print("valid ip")
  else :
-  print ('No match for ip')
+  print ('No match for ip or not a valid ip')
 
 
 #########################################################################################
@@ -60,9 +69,14 @@ def mailcheck():
 #########################################################################################
 
 def telephone():
- # Validate the US telephone number
  print ("Validate US telephone number")
-
+ input_num=input('Enter the Telephone Number:')
+ pattern="^(\+)?(1)?(\s|-)?((\d{3})(-|\s)?){2}(\d{4})$"
+ match=re.match(pattern,input_num)
+ if match:
+  print("Found telephone number")
+ else:
+  print("No match ")
 
 ##########################################################################################
 
