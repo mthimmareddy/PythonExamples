@@ -24,20 +24,60 @@ Programs = '''
 19.To find squareroot of number
 20.Print the range of numbers 1-100 witout using loops
 21.Given a list find the avg of list
-22.Find a fibonacci series of number
+22.Find a fibonacci series of number without recursion
 23.Find reverse of string
 24.File exists
 25.To find the transpose of matrix
 26.List to set conversion
+27.Accessing the csv
+28.Reverse of string without using other string
+29.To find the maximum element in list and return the value and its index
+
+30.To find file exists in directory or not
+31.Ifconfig output with different interface name,ip extraction
+32.Generators demo in python
+
 '''
 
 
 ###########################################################################################
 ###########################################################################################
+def maxvaluelist():
+    employment=[23.4,67.0,56.7,23.0,56.8,65.6,76.7,34.4,45.6]
+    max_value = 0
+    index = 0
+    for value in range(len(employment)):
+        # print("ths country {0} has {1} employmentrate".format(countries[value],employment[value]))
+        if (employment[value] > max_value):
+            max_value = employment[value]
+            index = value
+    print("Maximum employment value is {0} has index{1} and country is {2}".format(max_value, index))
+
+
+def reversestr():
+
+    string1="manju"
+    print(string1[::-1])
+    ''' 
+    i=0
+    j=len(string1)-1
+    while(i!=j):
+        tmp=string1[i]
+        string1[i]=string1[j]
+        string1[j]=tmp
+        i=i+1
+        j=j-1
+    print(string1)
+    '''
+##############################################################################################
 def listtoset():
     list1=[1,2,3,4,5,6,7,8,9,2,3,4,5]
+
     s=set(list1)
     print (s)
+
+
+###############################################################################################
 
 def transposematrix():
     matrix1=[[1,2,3,4],[5,6,7,8],[9,10,11,12]]
@@ -50,6 +90,8 @@ def transposematrix():
         mat2.append(mat1)
     print ('Matrix after transpose',mat2)
 
+    mat4=[[matrix1[row][col] for row in range(0,len(matrix1))] for col in range(0,len(matrix1[0]))]
+    print(mat4)
 ###############################################################################################
 
 def ipcheck():
@@ -161,7 +203,7 @@ def trailing():
 ###########################################################################################
 def endspace():
     # 8.To remove end and start spaces in string
-    
+
     string1 = " This is spaces in begining and end  "
     print(string1)
     print(string1.strip())
@@ -231,10 +273,16 @@ def fact1():
 def prime():
     # 12.Given list ,prime numbers with generators and witout generators
 
-    list1 = [2, 3, 34, 23, 17, 11, 56, 25, 44, 99]
+    list1 = [2, 3, 2,34, 23, 17, 11, 56, 25, 44, 99,7]
 
+    #Using the list comphrensions
+
+    prime1=[x for x in list1 if all(x % y != 0 for y in range(2, x))]
+    print("Prime numbers {0}".format(prime1))
+
+    #Withouut using comprehensions
     for i in list1:
-        if (i == 3) or i == 5:
+        if (i == 3) or i == 5 or i==2:
             print("{0} Prime number".format(i))
             continue
         if (i % 2 == 0 or i % 3 == 0 or i % 5 == 0):
@@ -490,13 +538,17 @@ def listofdict():
     print (d)
 
 #list of dictionaries
-    d1={}
-    l2=[]
-    for i in range(0,len(keys)):
-     for j in range(0,len(listall)):
-        d1[keys[i]]=listall[j][i]
-     l2.append(d1)
-    print (l2)
+
+    list1=[]
+
+    for i in range(0,len(listall)):
+        d1={}
+        for j in range(0,len(listall[0])):
+          d1[keys[j]]=listall[i][j]
+        print(d1)
+        list1.append(d1)
+    print(list1)
+
 '''
 #Using zip,map,and dict
     d = dict(zip(keys, map(list, zip(*listall))))
@@ -509,6 +561,34 @@ def listofdict():
 
     print(list2)
 '''
+#####################################################################################################################
+import unicodecsv
+def accesscsv():
+  print("CSV reading")
+  datacsv=[{'firstnam': 'manju', 'sirname': 'thimmareddy', 'hobby': 'writing', 'age': '29'},
+  {'firstnam': 'rishi', 'sirname': 'shereddy', 'hobby': 'dancing', 'age': '3'},
+  {'firstnam': 'ravi', 'sirname': 'chandra', 'hobby': 'reading', 'age': '33'}]
+
+#Accessing without module
+  
+  for ele in datacsv:
+      for word in ele:
+          print (word,ele[word])
+
+
+#######################################################################################################################
+
+def read_csv(filename):
+  list1=[]
+  with open(filename,'r') as f:
+      reader=unicodecsv.DictReader(f)
+      for row in reader:
+        list1.append(row)
+      #list1=list(reader)
+  print(list1)
+
+
+
 
 #####################################################################################################################
 
@@ -544,7 +624,8 @@ options = {1: ipcheck, 2: mailcheck, 3: telephone, 4: numlines, 5: charfile, 6: 
            9: duplicate, 10: dupchar, 11: duplist,
            12: dupcharfile, 13: fact1, 14: listofdict, 15: listofdict1, 16: prime, 17: classdemo, 18: Datatypesdemo,
            19: squareroot, 20: printrangenumbers,
-           21: listavg, 22: fib, 23: reversestring, 24: fileexists,25:transposematrix,26:listtoset}
+           21: listavg, 22: fib, 23: reversestring, 24: fileexists,25:transposematrix,26:listtoset,27:accesscsv,
+           28:reversestr,29:maxvaluelist}
 
 print(Programs)
 
