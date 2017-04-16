@@ -42,6 +42,34 @@ Programs = '''
 
 ###########################################################################################
 ###########################################################################################
+
+def generators_square():
+    #list1 = []
+ def square():
+     for x in range(1,100):
+        yield(x*x)       #keeps the eleemnt one at time hence performance is much better
+        #list1.append(x*x)
+    #print(list1)
+ numlist1=[x*x for x in range(1,25)] #list comprehension
+ numlist2=(x*x for x in range(25,50)) #using Generators
+
+ print(numlist2) #you cant access eleemnts all at time
+ #numlist=square()
+ #print(numlist1)
+
+ for num in numlist2: #Generators ar accessed this way
+    print(num)
+
+
+
+
+
+
+
+
+
+#######################################################################################################
+
 def maxvaluelist():
     employment=[23.4,67.0,56.7,23.0,56.8,65.6,76.7,34.4,45.6]
     max_value = 0
@@ -51,8 +79,9 @@ def maxvaluelist():
         if (employment[value] > max_value):
             max_value = employment[value]
             index = value
-    print("Maximum employment value is {0} has index{1} and country is {2}".format(max_value, index))
+    print("Maximum employment value is {0} has index : {1} ".format(max_value, index))
 
+#####################################################################################################
 
 def reversestr():
 
@@ -496,12 +525,43 @@ def duplist():
 
 
 ###########################################################################################################
+import os.path
+
+def findfile():
+ search_file=input('Enter the file name:')
+ flag=0
+ dirlist=os.listdir(os.getcwd())
+ print (dirlist)
+ for file1 in dirlist:
+     if file1==search_file:
+         flag=1
+         break
+     else:
+         flag=0
+ if (flag==1):
+     print("File Found in current directory {0}".format(os.getcwd()))
+ else:
+   for file1 in dirlist:
+     if(os.path.isfile(file1)!=True):
+         path2=os.getcwd()+"\file1"
+         for file2 in os.listdir(path2):
+            if file2==search_file:
+                flag1=1
+                break
+            else:
+                flag1=0
+ if (flag1 == 1):
+  print("File Found in current directory {0}".format(path2))
+
+
+
+
+
 
 
 
 ##############################################################################################################
-def dupcharfile():
-    print("To find dupchar in file")
+
 
 
 ###########################################################################################################
@@ -621,11 +681,9 @@ def listofdict1():
 ########################################################################################################################
 
 options = {1: ipcheck, 2: mailcheck, 3: telephone, 4: numlines, 5: charfile, 6: wordsfile, 7: trailing, 8: endspace,
-           9: duplicate, 10: dupchar, 11: duplist,
-           12: dupcharfile, 13: fact1, 14: listofdict, 15: listofdict1, 16: prime, 17: classdemo, 18: Datatypesdemo,
-           19: squareroot, 20: printrangenumbers,
-           21: listavg, 22: fib, 23: reversestring, 24: fileexists,25:transposematrix,26:listtoset,27:accesscsv,
-           28:reversestr,29:maxvaluelist}
+           9: duplicate, 10: dupchar, 11: duplist,13: fact1, 14: listofdict, 15: listofdict1, 16: prime, 17: classdemo,
+           18: Datatypesdemo,19: squareroot, 20: printrangenumbers,21: listavg, 22: fib, 23: reversestring, 24: fileexists,
+           25:transposematrix,26:listtoset,27:accesscsv,28:reversestr,29:maxvaluelist,30:findfile,32:generators_square}
 
 print(Programs)
 
