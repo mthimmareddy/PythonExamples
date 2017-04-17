@@ -23,7 +23,7 @@ Programs = '''
 18.Demonstarte listsa nd strings in Python
 19.To find squareroot of number
 20.Print the range of numbers 1-100 witout using loops
-21.Given a list find the avg of list
+21.Given a list,find the avg of list if all the elements present else break
 22.Find a fibonacci series of number without recursion
 23.Find reverse of string
 24.File exists
@@ -52,20 +52,14 @@ def generators_square():
     #print(list1)
  numlist1=[x*x for x in range(1,25)] #list comprehension
  numlist2=(x*x for x in range(25,50)) #using Generators
-
+ list2=list(numlist2)  #convert generators to list
+ print(list2)
  print(numlist2) #you cant access eleemnts all at time
  #numlist=square()
  #print(numlist1)
 
  for num in numlist2: #Generators ar accessed this way
     print(num)
-
-
-
-
-
-
-
 
 
 #######################################################################################################
@@ -121,6 +115,9 @@ def transposematrix():
 
     mat4=[[matrix1[row][col] for row in range(0,len(matrix1))] for col in range(0,len(matrix1[0]))]
     print(mat4)
+
+
+
 ###############################################################################################
 
 def ipcheck():
@@ -383,13 +380,38 @@ def printrangenumbers():
 
 
 def listavg():
-    list1 = [2, 3, 4, 5, 3, 4]
+    list2 = [1, 2, 3, 4, 5]
+    count=int(input('Enter the number of items you want in list:'))
+    list1=[]
+    cnt=0
+    for i in range(0,count):
+        i=int(input('Enter the number :'))
+        list1.append(i)
+
+
+    for i in list1:
+      for j in list2:
+        if  i==j:
+         cnt=cnt+1
+
+
+    sum1=0
+    if(cnt==count):
+      for i in list1:
+          sum1=sum1+i
+      print('Average of list items is:',(sum1/cnt))
+    else:
+        print("All the elemnts not present in original list")
+
+
+    '''
     sum1 = 0
     for i in list1:
         sum1 += i
     avg = sum1 / (len(list1) + 1)
     print("Average of list is:", avg)
-
+   
+    '''
 
 ##################################################################################################
 
