@@ -32,17 +32,33 @@ Programs = '''
 27.Accessing the csv
 28.Reverse of string without using other string
 29.To find the maximum element in list and return the value and its index
-
 30.To find file exists in directory or not
 31.Ifconfig output with different interface name,ip extraction
 32.Generators demo in python
-
+33.Given list of elements find the largest,second largest and smallest element
+34.Given matrix,find second largest along all columns
 '''
 
 
 ###########################################################################################
 ###########################################################################################
+def seclarmatrix():
+    list1=[[8,2,3],[3,4,5],[6,7,8],[56,67,78],[23,34,12],[1,11,23]]
 
+    final=[]
+    for col in range(0,len(list1[0])):
+        tran=[]
+        for row in range(0,len(list1)):
+            tran.append(list1[row][col])
+        final.append(tran)
+    print(final)
+
+
+    for i in range(0,len(list1[0])):
+     list3=sorted(final[i])
+     print("Second largets in {0} is {1}".format(i,list3[len(list3)-2]))
+
+#############################################################################################
 def generators_square():
     #list1 = []
  def square():
@@ -393,7 +409,8 @@ def listavg():
       for j in list2:
         if  i==j:
          cnt=cnt+1
-
+      if(cnt==0):
+         break
 
     sum1=0
     if(cnt==count):
@@ -401,17 +418,10 @@ def listavg():
           sum1=sum1+i
       print('Average of list items is:',(sum1/cnt))
     else:
-        print("All the elemnts not present in original list")
+        print("All the given elemnts not present in original list")
 
 
-    '''
-    sum1 = 0
-    for i in list1:
-        sum1 += i
-    avg = sum1 / (len(list1) + 1)
-    print("Average of list is:", avg)
-   
-    '''
+
 
 ##################################################################################################
 
@@ -705,7 +715,8 @@ def listofdict1():
 options = {1: ipcheck, 2: mailcheck, 3: telephone, 4: numlines, 5: charfile, 6: wordsfile, 7: trailing, 8: endspace,
            9: duplicate, 10: dupchar, 11: duplist,13: fact1, 14: listofdict, 15: listofdict1, 16: prime, 17: classdemo,
            18: Datatypesdemo,19: squareroot, 20: printrangenumbers,21: listavg, 22: fib, 23: reversestring, 24: fileexists,
-           25:transposematrix,26:listtoset,27:accesscsv,28:reversestr,29:maxvaluelist,30:findfile,32:generators_square}
+           25:transposematrix,26:listtoset,27:accesscsv,28:reversestr,29:maxvaluelist,30:findfile,32:generators_square,
+           34:seclarmatrix}
 
 print(Programs)
 
