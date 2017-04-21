@@ -37,11 +37,172 @@ Programs = '''
 32.Generators demo in python
 33.Given list of elements find the largest,second largest and smallest element
 34.Given matrix,find second largest along all columns
+35.Given a list of strings, return the count of the number of strings where the string length is 2 or more and
+ the first and last chars of the string are the same.
+Note: python does not have a ++ operator, but += works.
+36.String sorting
+37.Given a list of strings, return a list with the strings in sorted order, except group all the strings that begin with 'x' first.
+38.Sorting a list of numbers
+39.C. sort_last,Given a list of non-empty tuples, return a list sorted in increasing order by the last element in each tuple.
+# e.g. [(1, 7), (1, 3), (3, 4, 5), (2, 2)] yields
+# [(2, 2), (1, 3), (3, 4, 5), (1, 7)]
+40.Given a string s, return a string made of the first 2 and the last 2 chars of the original string, so 'spring' yields 'spng'. However, if the string length
+# is less than 2, return instead the empty string.
+41.Given a string s, return a string where all occurences of its first char have been changed to '*', except do not change the first char itself.
+# e.g. 'babble' yields 'ba**le'
+42.Given strings a and b, return a single string with a and b separated by a space '<a> <b>', except swap the first 2 chars of each string.
+# e.g.'mix', pod' -> 'pox mid' 'dog', 'dinner' -> 'dig donner' Assume a and b are length 2 or more.
+43.Given 2 sorted list, merge into single sorted list
+
+
 '''
 
+###########################################################################################
+###########################################################################################
+def list_merge():
+    list1=[1,2,3,4,5,6]
+    list2=[4,5,6,7,8,9]
+    #print(list1.append(list2)) #append complete list inside list
+    list1.extend(list2) #Extend will add eleemnt at end of list,end is  1D list
 
-###########################################################################################
-###########################################################################################
+    print(list1)
+    print(sorted(list1))
+
+    #print(sorted(list1+list2))
+################################################################################################
+def mix_up():
+    a=input('Enter string 1')
+    b=input('Enter second string')
+    s1=list(a)
+    s2=list(b)
+    tmp1=s1[0]
+    tmp2=s1[1]
+    s1[0]=s2[0]
+    s1[1]=s2[1]
+    s2[0]=tmp1
+    s2[1]=tmp2
+    a=''.join(s1)
+    print(a)
+    b=''.join(s2)
+    #print(b)
+    print(a+" "+b)
+    #print(a)
+
+##################################################################################################
+
+def fix_start():
+  # +++your code here+++
+  s="rishiissmart"
+  s1=list(s)   #string has to converted to list for character teplacement
+  count={}
+  print(s.count('r')) #inbuilt function to count charachter occurances in string
+  print(s.rstrip())
+  print(s.lstrip())
+  print(s.strip())
+
+  #tmp=s[0]
+  #s1[0]='M'
+
+  for ch in range(0,len(s1)):
+      if s1[ch] not in count:
+          count[s1[ch]]=1
+      else:
+          count[s1[ch]]=count[s1[ch]]+1
+          #print(s[ch])
+          s1[ch]='*'
+  s=''.join(s1)
+  print(s)
+
+
+
+
+##############################################################################################
+def both_ends():
+  # +++your code here+++
+  s="manjuisawesome"
+  s1=''
+  if(len(s)<=2):
+      print (' ')
+  else:
+      s1=''.join(s[0])
+      s1 +=''.join(s[1])
+      s1 +=''.join(s[len(s)-2])
+      s1 +=''.join(s[len(s)-1])
+      print(s1)
+      #return s1'''
+
+################################################################################################
+
+def tuplesort():
+    list1=[(1, 7), (1, 3), (3, 4, 5), (2, 2),(4,5,6),(1,2,3),(3,5,7)]
+
+
+    for i in range(0,len(list1)-1):
+        for j in range(i+1,len(list1)):
+            if (list1[i][len(list1[i])-1]>list1[j][len(list1[j])-1]):
+                tmp=list1[j]
+                list1[j]=list1[i]
+                list1[i]=tmp
+    print(list1)
+
+
+################################################################################################
+
+def bubblesort():
+    list1=[15,14,3,2,1,8,9,1,4,6,19,21,13,14,16]
+
+    for i in range(0,len(list1)-1):
+        for j in range(i+1,len(list1)):
+            if(list1[i]>list1[j]):
+                tmp=list1[j]
+                list1[j]=list1[i]
+                list1[i]=tmp
+    print(list1)
+
+#############################################################################################
+
+def stringmatch():
+    list1=['mix', 'xyz', 'apple', 'xanadu', 'aardvark']
+    list2=[]
+    list3=[]
+    for i in list1:
+        if i[0]=='x' or i[0]=='X':
+            list2.append(i)
+        else:
+            list3.append(i)
+    #print()
+    print(list2+sorted(list3))
+
+############################################################################################
+
+def sortstirng():
+    s="Bobble bolly"
+    s1='BALL'
+    print(s1.lower().upper())
+    c=''.join(sorted(set(s))) #sorts the string and keeps them distint
+    print (c)
+    c1=''.join(sorted(s)) #sorts and keep duplicates
+    print (c1)
+    print(''.join(sorted(set(s.lower()))).strip()) #to get rid of begining and end spaces
+
+
+#######################################################################################################
+
+def stringlen():
+
+ list1=['hello','anja','manjum','rishi','ravi','runr']
+ print(sorted(list1))
+ cnt=0
+ cnt1=0
+ for i in list1:
+  if len(i)>2 :
+   cnt=cnt+1
+   #print(cnt)
+   if(i[0]==i[len(i)-1]):
+     cnt1=cnt1+1
+ print("{0} list items have length greater that \"two\" and {1} have first and last character same".format(cnt,cnt1))
+
+##################################################################################################
 def seclarmatrix():
     list1=[[8,2,3],[3,4,5],[6,7,8],[56,67,78],[23,34,12],[1,11,23]]
 
@@ -56,7 +217,7 @@ def seclarmatrix():
 
     for i in range(0,len(list1[0])):
      list3=sorted(final[i])
-     print("Second largets in {0} is {1}".format(i,list3[len(list3)-2]))
+     print("Second largets in {0} column  is {1}".format(i,list3[len(list3)-2]))
 
 #############################################################################################
 def generators_square():
@@ -716,7 +877,8 @@ options = {1: ipcheck, 2: mailcheck, 3: telephone, 4: numlines, 5: charfile, 6: 
            9: duplicate, 10: dupchar, 11: duplist,13: fact1, 14: listofdict, 15: listofdict1, 16: prime, 17: classdemo,
            18: Datatypesdemo,19: squareroot, 20: printrangenumbers,21: listavg, 22: fib, 23: reversestring, 24: fileexists,
            25:transposematrix,26:listtoset,27:accesscsv,28:reversestr,29:maxvaluelist,30:findfile,32:generators_square,
-           34:seclarmatrix}
+           34:seclarmatrix,35:stringlen,36:sortstirng,37:stringmatch,38:bubblesort,39:tuplesort,40:both_ends,41:fix_start,
+           42:mix_up,43:list_merge}
 
 print(Programs)
 
