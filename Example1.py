@@ -53,12 +53,84 @@ Note: python does not have a ++ operator, but += works.
 42.Given strings a and b, return a single string with a and b separated by a space '<a> <b>', except swap the first 2 chars of each string.
 # e.g.'mix', pod' -> 'pox mid' 'dog', 'dinner' -> 'dig donner' Assume a and b are length 2 or more.
 43.Given 2 sorted list, merge into single sorted list
-
-
+44.D. Given a list of numbers, return a list where all adjacent == elements have been reduced to a single element, so [1, 2, 2, 3] returns [1, 2, 3]. You may create a new list or
+# modify the passed in list.
+45.Consider dividing a string into two halves.If the length is even, the front and back halves are the same length.
+If the length is odd, we'll say that the extra char goes in the front half. e.g. 'abcde', the front half is 'abc', the back half 'de'. Given 2 strings, a and b, return a string of the form
+#  a-front + b-front + a-back + b-back
+46.Given a string, find the first appearance of the substring 'not' and 'bad'. If the 'bad' follows the 'not', replace the whole 'not'...'bad' substring
+# with 'good'.Return the resulting string.So 'This dinner is not that bad!' yields:This dinner is good!
+47.Given a string, if its length is at least 3,add 'ing' to its end.Unless it already ends in 'ing', in which case add 'ly' instead. If the string length is less than 3, leave it unchanged.
+Return the resulting string.
 '''
 
 ###########################################################################################
 ###########################################################################################
+
+def verbing():
+    s=input('Enter the String')
+    if(len(s)>3 and s[len(s)-3:len(s)]!='ing'):
+        s+=''.join('ing')
+        print(s)
+    elif(len(s)>3) and s[len(s)-3:len(s)]=='ing':
+        s+=''.join('ly')
+        print(s)
+    elif (len(s)<3):
+        print('String length less than 3 characters')
+  # +++your code here+++
+
+
+###############################################################################################
+
+def not_bad():
+  # +++your code here+++
+  #refer string.find()
+  s=input('Enter the string:')
+  s1=""
+  pat=r"not(\s|\w)+bad"
+  re.search(pat,s)
+  if (re.search(pat,s)):
+      s1=re.sub(pat,"good",s)
+  print(s1)
+
+#####################################################################################################
+def front_back():
+  # +++your code here+++
+  a=input('Enetr the string1 :')
+  # b=input('Enter the string2 :')
+  afront=""
+  aback=""
+  if(len(a)%2==0):
+      lena1=len(a)/2
+      for i in range(0,int(len(a)/2)):
+          afront+=a[i]
+      for i in range(int((len(a)/2)),int(len(a))):
+          aback +=''.join(a[i])
+  else:
+      for i in range(0,int(len(a)/2)+1):
+          afront+=''.join(a[i])
+      for i in range(int(len(a)/2)+1,int(len(a))):
+          aback+=''.join(a[i])
+  print(afront,aback)
+
+
+  return
+
+#################################################################################################
+def conseqdup():
+    list1=[1,2,2,3,4,5,5,6,7,2,3,5]
+    list2=[]
+    for i in range(0,len(list1)-1):
+        j=i+1
+        if(list1[i]==list1[j]):
+            continue
+        else:
+            list2.append(list1[i])
+    print(list2)
+
+#####################################################################################################
+
+
 def list_merge():
     list1=[1,2,3,4,5,6]
     list2=[4,5,6,7,8,9]
@@ -878,7 +950,8 @@ options = {1: ipcheck, 2: mailcheck, 3: telephone, 4: numlines, 5: charfile, 6: 
            18: Datatypesdemo,19: squareroot, 20: printrangenumbers,21: listavg, 22: fib, 23: reversestring, 24: fileexists,
            25:transposematrix,26:listtoset,27:accesscsv,28:reversestr,29:maxvaluelist,30:findfile,32:generators_square,
            34:seclarmatrix,35:stringlen,36:sortstirng,37:stringmatch,38:bubblesort,39:tuplesort,40:both_ends,41:fix_start,
-           42:mix_up,43:list_merge}
+           42:mix_up,43:list_merge,44:conseqdup,45:front_back,46:not_bad,47: verbing
+}
 
 print(Programs)
 
