@@ -62,10 +62,106 @@ If the length is odd, we'll say that the extra char goes in the front half. e.g.
 # with 'good'.Return the resulting string.So 'This dinner is not that bad!' yields:This dinner is good!
 47.Given a string, if its length is at least 3,add 'ing' to its end.Unless it already ends in 'ing', in which case add 'ly' instead. If the string length is less than 3, leave it unchanged.
 Return the resulting string.
+48.Remove the duplicates in list
+49.Fibonacci series with recursion
+50.Usage of lamda,map,zip,all,any and filter
+
+51.To list all the files in the given directory
+52.Sorting using merge ,quick sort
+53.Linear search and binary search
+
 '''
 
 ###########################################################################################
 ###########################################################################################
+def special_builtin():
+    from functools import reduce
+    list1 = [1, 2, 3]
+    list2 = [2, 3, 4]
+    list3 = [1, 2, 4]
+    list4 = [3, 4, 5]
+
+    # lambda is fuction used to create the anynymous fuction without actully creating it,ie it not bound to name
+    # at runtime ,it integrated with filter ,map,reduce
+    g = lambda x: x * 2
+
+    print("Using the lambda", g(5))
+
+    # The map(aFunction, aSequence) function applies a passed-in function to each item in an
+    # iterable object and returns a list containing all the function call results.
+
+    list2 = list(map(lambda x: x ** 2, list1))
+    print("List of items with squares using map and lamda", list2)
+
+    def squares(x):
+        return (x * x)
+
+    print("List of items with squares using map", list(map(squares, list1)))
+
+    # The built-in filter() function operates on any iterable type (list, tuple, string, etc).
+    # It takes a function and an iterable as arguments. filter() will invoke the function on each element of the iterable,
+    # and return a new iterable composed of only those elements for which the function returned True.
+    print("Filter on true return using Filter", list(filter(lambda x: x % 2 == 0, list1)))
+
+    # Reduce is a really useful function for performing some computation on a list and returning the result integerr.
+    # For example, if you wanted to compute the product of a list of integers.
+    sum1 = reduce((lambda x, y: x + y), [1, 2, 3, 30])
+    print("Sum of list using reduce", sum1)
+
+    product = reduce((lambda x, y: x * y), [1, 2, 3, 30])
+    print("Product using the reduce", product)
+
+    # Zip function to traverse 2 list items at time
+
+    list1 = [1, 2, 3]
+    list2 = [2, 3, 4]
+    for a, b in zip(list1, list2):
+        print("items of 2 list", a, b)
+
+    list3 = [list1, list2]
+    print(list3)
+    print(list(zip(*list3)))  # to transpose the list use zip(*values)
+
+    # print(listb)
+    print("sum of lists", reduce(lambda x, y: x + y, list1))
+
+    '''You can roughly think of any and all as series of logical or and and operators, respectively.
+    any will return True when atleast one of the elements is Truthy. Read about Truth Value Testing.
+    all will return True only when all the elements are Truthy.
+    '''
+    list2 = [x for x in range(1, 100) if all(x % j != 0 for j in range(2, x))]
+    print("Prime numbers list from 1-100", list2)
+
+###############################################################################################
+
+def rem_dup():
+    list1=[1,2,3,3,3,4,5,5,1,2,1,1,1,3,3,3,4,5,5,1,2]
+    list2=[]
+    count={}
+
+    for i in range(0,len(list1)):
+        if list1[i] not in count:
+            count[list1[i]]=1
+            list2.append(list1[i])
+        else:
+            count[list1[i]]+=1
+            #del list1[i]
+    print(list2)
+#############################################################################################################
+
+def fib(n):
+    x=0
+    y=1
+    if(n==0):
+        return 0
+    if(n==1):
+        return 1
+    if n>1:
+        print(fib(n-1),fib(n-2))
+        return(fib(n-1)+fib(n-2))
+    print('Fibonaci series',fib(4))
+
+###################################################################################################
 
 def verbing():
     s=input('Enter the String')
@@ -309,6 +405,12 @@ def generators_square():
 
  for num in numlist2: #Generators ar accessed this way
     print(num)
+
+list2 = [x for x in range(1, 100) if all(x % j != 0 for j in range(2, x))]
+print("Prime numbers list from 1-100", list2)
+
+list2 = [x for x in range(1, 100) if x % 3 == 0]
+print("Multiple of 3", list2)
 
 
 #######################################################################################################
@@ -564,6 +666,18 @@ def prime():
             print("{0} Not prime".format(i))
         else:
             print("{0} is Prime".format(i))
+
+  #other way of doing
+    list2 = []
+    for i in range(1, 100):
+        flag = 0
+        for j in range(2, i):
+          if (i % j) == 0:
+            flag = 1
+            continue
+        if (flag == 0):
+         list1.append(i)
+    print("{0} Prime number list".format(list1))
 
 
 ############################################################################################
@@ -950,7 +1064,7 @@ options = {1: ipcheck, 2: mailcheck, 3: telephone, 4: numlines, 5: charfile, 6: 
            18: Datatypesdemo,19: squareroot, 20: printrangenumbers,21: listavg, 22: fib, 23: reversestring, 24: fileexists,
            25:transposematrix,26:listtoset,27:accesscsv,28:reversestr,29:maxvaluelist,30:findfile,32:generators_square,
            34:seclarmatrix,35:stringlen,36:sortstirng,37:stringmatch,38:bubblesort,39:tuplesort,40:both_ends,41:fix_start,
-           42:mix_up,43:list_merge,44:conseqdup,45:front_back,46:not_bad,47: verbing
+           42:mix_up,43:list_merge,44:conseqdup,45:front_back,46:not_bad,47: verbing,48:rem_dup,49:fib,50:special_builtin
 }
 
 print(Programs)
