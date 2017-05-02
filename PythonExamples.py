@@ -77,6 +77,9 @@ pass
 52.Reverse the list 
 53.Merge sort
 54.Web Scarping in python
+55.CSV reading in python without module and with module
+56.Excel reading in python
+
 
 54.Collections and use
 52.Linear search and binary search
@@ -107,11 +110,33 @@ Python related questions ask interview
 
 ###########################################################################################
 ###########################################################################################
+def csvread():
+    print("################Without using modules########################3")
+    keys = []
+
+    with open("test.csv", 'r') as f:
+        keys = f.readline().strip().split(',')
+        print(keys)
+        for line in f:
+            print(line.strip().split(','))
+
+
+    import csv
+    print("################Using csv modules########################3")
+    with open("test.csv", 'r', newline='') as f:
+     read = csv.reader(f)
+     header = next(read)  # extract the header in csv
+
+     for line in read:
+        print(line)
+
+#############################################################################################################3
 def webscrape():
+    pass
 
 
 
-################################################################################################
+###############################################################################################
 def msort(x):
     result = []
     if len(x) < 20:
@@ -1180,7 +1205,7 @@ options = {1: ipcheck, 2: mailcheck, 3: telephone, 4: numlines, 5: charfile, 6: 
            24: fileexists,25: transposematrix, 26: listtoset, 27: accesscsv, 28: reversestr, 29: maxvaluelist, 30: findfile,
            32: generators_square,34: seclarmatrix, 35: stringlen, 36: sortstirng, 37: stringmatch, 38: bubblesort, 39: tuplesort,
            40: both_ends, 41: fix_start,42: mix_up, 43: list_merge, 44: conseqdup, 45: front_back, 46: not_bad, 47: verbing, 48: rem_dup, 49: fib,
-           50: special_builtin,51: quicksort, 52: rev_list,53:msort,54:webscrap
+           50: special_builtin,51: quicksort, 52: rev_list,53:msort,54:webscrape,55:csvread
            }
 
 print(Programs)

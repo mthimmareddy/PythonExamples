@@ -14,12 +14,61 @@ and Viewing the data of dataframe
 7.apply and applymap on Series and df
 
 8.Groupby in dataframes
+9.read_csv into dataframe and read_excel into dataframe
 '''
+
+
 dates = pd.date_range('20130101', periods=6)
 df = pd.DataFrame(np.random.rand(6, 4), index=dates, columns=list('ABCD'))
 
+
+a=np.array([1,2,3,4,5,6,7,8,9])
+
+df1=pd.DataFrame({'data':a,'even':a*2,'add3':a*3,'add4':a*4})
+
+#print(df1)
+
 #########################################################################################################3
 ##########################################################################################################33
+def groupby():
+    raw_data = {'regiment': ['Nighthawks', 'Nighthawks', 'Nighthawks', 'Nighthawks', 'Dragoons', 'Dragoons', 'Dragoons',
+                             'Dragoons', 'Scouts', 'Scouts', 'Scouts', 'Scouts'],
+                'company': ['1st', '1st', '2nd', '2nd', '1st', '1st', '2nd', '2nd', '1st', '1st', '2nd', '2nd'],
+                'name': ['Miller', 'Jacobson', 'Ali', 'Milner', 'Cooze', 'Jacon', 'Ryaner', 'Sone', 'Sloan', 'Piger',
+                         'Riani', 'Ali'],
+                'preTestScore': [4, 24, 31, 2, 3, 4, 24, 31, 2, 3, 2, 3],
+                'postTestScore': [25, 94, 57, 62, 70, 25, 94, 57, 62, 70, 62, 70]}
+    df = pd.DataFrame(raw_data, columns=['regiment', 'company', 'name', 'preTestScore', 'postTestScore'])
+
+    print(df.groupby('name').sum())
+
+    print(df.groupby(['regiment', 'company']).mean())
+
+    print(df.groupby(['regiment', 'company']).size())
+    print(df.preTestScore.groupby(df.company).sum())
+    #print ("Maximum",df['postTestScore'].groupby(df['categories']).apply(np.max()).unstack())
+    print(df.preTestScore.groupby(df.company).describe())
+    print(df.preTestScore.groupby(df.company).mean())
+    print(df['preTestScore'].groupby([df['regiment'], df['company']]).mean())
+
+
+
+#######################################################################################################################333
+def csvexceloper():
+    df.to_csv('foo.csv')
+
+    df3=pd.read_csv("foo.csv")
+    print(df3)
+    '''
+    #import openpyxl
+    df.to_excel('foo.xlsx', sheet_name='Sheet1')
+
+    df4=pd.read_excel('foo.xlsx', 'Sheet1', index_col=None, na_values=['NA'])
+    print(df4)
+    '''
+
+###############################################################################################################
+
 def view_df():
     df = pd.DataFrame(np.random.rand(6, 4), index=[1, 2, 3, 4, 5, 6], columns=list('ABCD'))
     print(df)
@@ -238,7 +287,7 @@ def apply_applymap():
 ##############################################################################################3
 
 
-options = {1:dec_Series,2:series_addtion,3:view_df,4:selectdf,5:boolean_index,6:missingdata,7:apply_applymap}
+options = {1:dec_Series,2:series_addtion,3:view_df,4:selectdf,5:boolean_index,6:missingdata,7:apply_applymap,8:groupby,9:csvexceloper}
 
 print(Programs)
 

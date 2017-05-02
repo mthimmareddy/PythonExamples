@@ -24,6 +24,8 @@ the elements in an array using indexing facilities.
 2.Basic Operations
 3.Builtin functions in numpy
 4.Accessing the numpy array
+5.Load data from text files in numpy
+Data = np.loadtxt(filename,dtype='string',usecols=(1,2),delimiter="\t")
 
 '''
 
@@ -52,7 +54,11 @@ ridership = np.array([
     [1342, 4043, 4009, 4665, 3033]
 ])
 ###################################################################################################
+def loaddata():
+    Data = np.loadtxt("text2.txt", delimiter="\t" ,dtype=int ,unpack=True)
+    print(Data)
 
+######################################################################################################33
 def numpy_dec():
 # Subway ridership for 5 stations on 10 different days343q
 
@@ -182,7 +188,7 @@ def numpy_builtin():
 
 ###################################################################################################3
 
-options = {1:numpy_dec,2:basic_operations,3:numpy_builtin,4:access_numpy}
+options = {1:numpy_dec,2:basic_operations,3:numpy_builtin,4:access_numpy,5:loaddata}
 
 print(Programs)
 
