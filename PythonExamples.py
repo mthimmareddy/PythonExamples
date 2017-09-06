@@ -95,6 +95,7 @@ binary search
 57.classes and inheritance
 58.Direcoty traversersal,cleans the computer,cpu,memory
 59.Generators
+60.Argparser in python demo
 
 
 
@@ -1234,6 +1235,35 @@ def linearsearch():
   else:
       print("Not found")
 
+#################################################################################################	  
+def argparserdemo():
+
+   parser=argparse.ArgumentParser()
+      
+    
+    parser.add_argument("Search_criteria",help="Specify the what based Search")
+    parser.add_argument("pattern",help="search pattern")
+    parser.add_argument("-o","--out",help="search option specific")
+    args=parser.parse_args()
+    
+    print(args.Search_criteria)
+    print(args.pattern)
+     
+    if int(args.Search_criteria)==1:
+        result=searchbasedonfilename(args.pattern,sys.argv[3])
+    elif int(args.Search_criteria)==2:
+        result=searchbasedonfilecontent(args.pattern)
+    elif int(args.Search_criteria)==3:
+        result=searchbasedondate(args.pattern)
+    elif int(args.Search_criteria)==4:
+        result=searchbasedonsize(args.pattern)
+    elif int(args.Search_criteria)==5:
+        result=searchbasedontypeoffile(args.pattern)
+    else:
+        print("Search criteria range from 1-5")
+		
+####################################################################################################33
+
 
 
 
@@ -1247,7 +1277,7 @@ options = {1: ipcheck, 2: mailcheck, 3: telephone, 4: numlines, 5: charfile, 6: 
            24: fileexists,25: transposematrix, 26: listtoset, 27: accesscsv, 28: reversestr, 29: maxvaluelist, 30: findfile,31:read_csv,
            32: generators_square,34: seclarmatrix, 35: stringlen, 36: sortstirng, 37: stringmatch, 38: bubblesort, 39: tuplesort,
            40: both_ends, 41: fix_start,42: mix_up, 43: list_merge, 44: conseqdup, 45: front_back, 46: not_bad, 47: verbing, 48: rem_dup,
-           49: fib,50: special_builtin,51: quicksort, 52: rev_list,53:msort,54:webscrape,55:csvread,57:dicitems,58:linearsearch
+           49: fib,50: special_builtin,51: quicksort, 52: rev_list,53:msort,54:webscrape,55:csvread,57:dicitems,58:linearsearch,60:argparserdemo
            }
 
 print(Programs)
